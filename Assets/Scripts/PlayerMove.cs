@@ -9,6 +9,11 @@ public class PlayerMove : MonoBehaviour
     public Vector3 InputKey;
     public Rigidbody rb;
     public bool IsGrounded = true;
+
+    public Animator animator;
+
+
+    public AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,8 @@ public class PlayerMove : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsGrounded = false;
+            animator.ResetTrigger("Jump");
+            animator.SetTrigger("Jump");
         }
         
     }
@@ -47,7 +54,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bubble"))
         {
+            animator.SetTrigger("Jump");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            AudioSource.Play();
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Ground"))
         {

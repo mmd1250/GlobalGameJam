@@ -13,7 +13,11 @@ TagManager:
   - Door5
   - HiidenDoor
   - Door6
-  - Key
+  - Key5
+  - Key1
+  - Key3
+  - Key2
+  - Key6
   layers:
   - Default
   - TransparentFX
